@@ -8,6 +8,7 @@ public class spawnMummy : MonoBehaviour {
     public SpriteRenderer[] parts;
     public int count = 15;
     public int length = 0;
+    public int enemyCount = 10;
     /*public GameObject head;
     public GameObject bodyTop;
     public GameObject bodyBot;
@@ -30,9 +31,9 @@ public class spawnMummy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        for (int j = 0; j < 10; j++)
+        for (int j = 0; j < enemyCount; j++)
         {
-            randX = Random.Range(-50f, 100f);
+            randX = Random.Range(50f, 100f);
             whereToSpawn = new Vector2(randX, transform.position.y);
             parts = Instantiate(enemy, whereToSpawn, Quaternion.identity).GetComponentsInChildren<SpriteRenderer>();
             length = parts.Length;
