@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class switchRagdoll : MonoBehaviour {
     public CircleCollider2D gob;
+    public int i = 0;
     void OnCollisionStay2D(Collision2D coll)
     {
-        coll.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-        coll.gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        this.GetComponent<BoxCollider2D>().enabled = false;
+        ((BoxCollider2D)coll.gameObject.GetComponent("BoxCollider2D")).enabled = false;
+        ((Rigidbody2D)coll.gameObject.GetComponent("Rigidbody2D")).simulated = false;
+        //((SpriteRenderer)coll.gameObject.GetComponent("SpriteRenderer")).enabled = false;
+        SpriteRenderer[] spr = coll.gameObject.GetComponentsInChildren<SpriteRenderer>();
         PolygonCollider2D[] pol = coll.gameObject.GetComponentsInChildren<PolygonCollider2D>();
-        Rigidbody2D[] rig = coll.gameObject.GetComponentsInChildren<Rigidbody2D>();
-        for (int i = 0, n = pol.Length; i < n; i++)
+        for (int n=pol.Length; i < n; i++ )
         {
-            pol[i].enabled = true;
-            rig[i].simulated = true;
+                spr[i].enabled = true;
+                pol[i].enabled = true;
         }
-        gob.enabled = true;
+        //coll.gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        //coll.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        //gob.enabled = true;        
     }
 }
