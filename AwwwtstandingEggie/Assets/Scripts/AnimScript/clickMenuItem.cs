@@ -5,11 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class clickMenuItem : MonoBehaviour {
 
-    public GameObject animCollider = null;
-    private Animator animator = null;
     public string nameTransferScene = null;
-    public string animationName = null;
-
+    private Animator animator = null;
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
@@ -18,6 +15,7 @@ public class clickMenuItem : MonoBehaviour {
 
     public void touchDown()
     {
+        clickBackgroundMenu.isFirstClick = false;
         animator.SetBool("up", false);
         animator.SetBool("down", true);
     }
@@ -26,6 +24,7 @@ public class clickMenuItem : MonoBehaviour {
     {
         animator.SetBool("up", true);
         animator.SetBool("down", false);
+        clickBackgroundMenu.isFirstClick = true;
     }
 
     public void transfer()
