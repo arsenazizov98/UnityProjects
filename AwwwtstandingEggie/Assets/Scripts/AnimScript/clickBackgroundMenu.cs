@@ -6,7 +6,6 @@ public class clickBackgroundMenu : MonoBehaviour {
 
     private Animator animator = null;
     public static bool isFirstClick = true;
-    public bool b = isFirstClick;
 
     // Use this for initialization
     void Start()
